@@ -1,0 +1,100 @@
+<div class="popup-container">
+  <img alt="popup" class="popup-img" src="/assets/img/popup/popup.png">
+</div>
+
+<div class="title-container">
+  <h1 class="title-page">DASHBOARD</h1>
+</div>
+
+<marquee behavio="scroll" direction="left">
+  <mat-list class="list-horizontal">
+    <mat-list-item *ngFor="let currency of currencies" class="list-item">
+      <img src="assets/logo/{{currency.ticker.toLocaleLowerCase()}}.png" class="logo-img">
+      {{currency.name}}
+    </mat-list-item>
+  </mat-list>
+</marquee>
+
+<div class="page">
+
+
+
+  <div class="cards-container">
+
+    <div class="one-card">
+      <mat-card class="resume-card">
+        <mat-card-title>Last exchange</mat-card-title>
+        <mat-card-subtitle>{{lastOrder?.currencyPair?.replace('_', '/')}}</mat-card-subtitle>
+        <div class="around-logo">
+          <button mat-fab color="accent">
+            <mat-icon>history icon</mat-icon>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="description" >
+          <h2 *ngIf="lastOrder?.orderType == 'BID' " class="bid">{{lastOrder?.amount?.toFixed(3)}} |
+            <span >BUY</span>
+          </h2>
+          <h2 *ngIf="lastOrder?.orderType == 'ASK' " class="sell">{{lastOrder?.amount?.toFixed(3)}} |
+            <span >SELL</span>
+          </h2>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="one-card">
+      <mat-card class="resume-card">
+        <mat-card-title>Wallet</mat-card-title>
+        <mat-card-subtitle>
+          {{user?.walletAddress?.substring(0, 8) + '...' + user?.walletAddress?.substring(
+          user?.walletAddress!.length - 8, user?.walletAddress!.length - 1)}}
+        </mat-card-subtitle>
+        <div class="around-logo">
+          <button mat-fab color="warn">
+            <mat-icon>attach_money</mat-icon>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="description">
+          <h2>{{walletAmount.toFixed(3) + ' €'}} </h2>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="one-card">
+      <mat-card class="resume-card">
+        <mat-card-title>{{user?.username }}</mat-card-title>
+        <mat-card-subtitle>{{user?.email}}</mat-card-subtitle>
+        <div class="around-logo">
+          <button mat-fab color="primary">
+            <mat-icon>person</mat-icon>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="description">
+          <h2>{{user?.dateOfBirth}}</h2>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+
+  <div class="chart-container">
+
+    <div class="container-list-chart">
+
+      <div class="chart-pair">
+        <div class="container-pair">
+          <img alt="currency" src="/assets/logo/eur.png" class="currency-logo">
+          <img alt="currency" src="/assets/logo/btc.png" class="currency-logo">
+          <h2>EUR /</h2>
+          <h1>BTC</h1>
+        </div>
+        <app-chart [symbolPair]="'BTCEUR'" [width]="1000" [height]="400"></app-chart>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

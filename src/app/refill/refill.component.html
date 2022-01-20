@@ -1,0 +1,68 @@
+<div class="popup-container">
+  <img alt="popup" class="popup-img" src="/assets/img/popup/popup5.png">
+</div>
+<div class="title-container">
+  <h1 class="title-page">BUY CRYPTO WITH CREDIT CARD</h1>
+</div>
+
+<mat-card class="card">
+
+  <mat-card-title>Buy Crypto in minutes</mat-card-title>
+
+  <div class="credit-card">
+
+    <mat-card-subtitle>Credit card</mat-card-subtitle>
+    <mat-form-field appearance="fill">
+      <mat-label>Card number</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <div class="date-cvc">
+
+      <mat-form-field appearance="fill" class="azerty">
+        <mat-label>Expiration date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CVC</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+    </div>
+  </div>
+
+  <div class="credit-card">
+
+    <mat-card-subtitle>Select crypto</mat-card-subtitle>
+
+    <form [formGroup]="form" class="normal-form" (ngSubmit)="doPayment()">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select formControlName="currencyTicker">
+          <mat-option *ngFor="let currency of currencies" value="{{currency.ticker}}">
+            {{currency.name}}
+            <img alt="logo" src="assets/logo/{{currency.ticker.toLocaleLowerCase()}}.png" class="currency-logo">
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="montant" matInput>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary">Send</button>
+
+      <div *ngIf="isSuccess" class="success-container">
+        <mat-icon class="done-logo">check_circle_outline</mat-icon>
+        <h3>Successfully ! </h3>
+      </div>
+    </form>
+
+  </div>
+</mat-card>
+

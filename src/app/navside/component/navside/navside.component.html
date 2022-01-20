@@ -1,0 +1,52 @@
+<mat-drawer-container>
+<mat-drawer mode="side" opened="true">
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="/assets/img/logo.png" alt="Logo" id="logo"/>
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="wallet">
+    <mat-icon>account_balance_wallet</mat-icon> Wallet
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="explorer">
+    <mat-icon>bar_chart</mat-icon> Trade
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="transactions">
+    <mat-icon>repeat</mat-icon> Transactions
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="refill">
+    <mat-icon>payment</mat-icon> Refill
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="transfer">
+    <mat-icon>send</mat-icon> Transfer
+  </a>
+
+  <h2 matSubheader class="mt-2">PARAMETERS</h2>
+
+  <a mat-list-item>
+    <mat-icon>settings</mat-icon> Settings
+  </a>
+
+  <a mat-list-item>
+    <mat-icon>person</mat-icon> User
+  </a>
+
+  <a mat-list-item class="logout-button" (click)="openDialog()">
+    <mat-icon>power_settings_new</mat-icon> Logout
+  </a>
+</mat-nav-list>
+</mat-drawer>
+<mat-drawer-content>
+<router-outlet></router-outlet>
+</mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,62 @@
+<div class="popup-container">
+  <img alt="popup" class="popup-img" src="/assets/img/popup/popup2.png">
+</div>
+
+<div class="title-container">
+  <h1 class="title-page">TRANSACTIONS</h1>
+</div>
+
+<table mat-table [dataSource]="orders" class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.creationDate.replace('T', ' ')}}
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"
+        [ngStyle]="{'color': element.orderType == 'BID' ? '#15ba6b' : '#be333d'}">
+      <span *ngIf="element.orderType == 'BID'">BUY</span>
+      <span *ngIf="element.orderType == 'ASK'">SELL</span>
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Pair">
+    <th mat-header-cell *matHeaderCellDef> Pair </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.currencyPair.replace('_', '/')}}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Amount">
+    <th mat-header-cell *matHeaderCellDef> Amount </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.amount}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Limit">
+    <th mat-header-cell *matHeaderCellDef> Limit </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.limitPrice}} €
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.status}}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

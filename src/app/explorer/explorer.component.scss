@@ -1,0 +1,31 @@
+table {
+  width: 80%;
+  background-color: #142028;
+  color: white;
+  margin: 0 auto;
+}
+
+th {
+  color: #818ea3;
+  font-size: 20px;
+}
+
+td {
+  color: white;
+  font-size: 18px;
+}
+
+.mat-row:hover .mat-cell{
+  background-color: #0b1217;
+}
+
+.btn-trade {
+  background-color: #fcd535;
+  color: black;
+}
+
+.logo-crypto {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}

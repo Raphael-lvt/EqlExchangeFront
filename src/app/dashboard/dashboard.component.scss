@@ -1,0 +1,126 @@
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.title-container {
+  padding: 50px 0 0px 50px !important;
+}
+
+.one-card {
+  margin-top: 10px;
+  width: 80%;
+}
+
+.page {
+  display: flex;
+}
+
+.resume-card {
+  margin: 10px ;
+}
+
+mat-card {
+  margin-top: 10px;
+  background-color: #0b1217;
+  color: lightgrey;
+  max-height: 150px;
+}
+
+mat-card-subtitle {
+  color: lightgray;
+}
+
+.around-logo {
+  position: relative;
+  float: right;
+  bottom: 66px;
+}
+
+mat-divider {
+  border-color: #aaebf1;
+}
+
+.description {
+  text-align: center;
+  clear: right;
+  position: relative;
+  bottom: 34px;
+}
+
+.chart-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+}
+
+.currency-logo {
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+}
+
+.container-pair {
+  display: flex;
+}
+
+.container-pair h2 {
+  padding: 10px;
+  color: #818ea3;
+}
+
+.container-pair h1 {
+  padding-top: 10px;
+  font-size: 30px;
+  color: white;
+}
+
+.logo-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.container-list-chart {
+  display: flex;
+}
+ .list-item {
+  color: white;
+}
+
+mat-list {
+  margin-top: 60px;
+}
+
+mat-list-item:hover {
+  color: #78bcba;
+}
+
+.sell {
+  color: #bf858b;
+}
+
+.sell span {
+  color: #b6313b ;
+}
+
+.bid {
+  color: #a3ccbb;
+}
+
+.bid span {
+  color: #14aa63;
+}
+
+mat-list.list-horizontal {
+  padding: 0;
+  .mat-list-item {
+    display: inline-block;
+    height: auto;
+    width: auto;
+  }
+}

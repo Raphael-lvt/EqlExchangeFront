@@ -1,0 +1,108 @@
+<div class="popup-container">
+  <img alt="popup" class="popup-img" src="/assets/img/popup/popup4.png">
+</div>
+<div class="title-container">
+  <h1 class="title-page">TRADE</h1>
+</div>
+
+<div class="trade-container">
+  <div class="chart-cont">
+    <div class="container-pair">
+      <img alt="currency" src="/assets/logo/eur.png" class="currency-logo">
+      <img alt="currency" src="/assets/logo/{{currencyId.toLocaleLowerCase()}}.png" class="currency-logo">
+      <h2>EUR /</h2>
+      <h1>{{currencyId}}</h1>
+    </div>
+    <app-chart [symbolPair]="pair.replace('_','')" [width]="1000" [height]="350"></app-chart>
+  </div>
+  <mat-card class="form-container">
+    <mat-card-title align="center">Trade tokens in an instant</mat-card-title>
+
+
+    <form [formGroup]="form" class="normal-form" (ngSubmit)="sendTradeOrder()" >
+      <div class="element-form" align="center">
+        <mat-radio-group formControlName="orderType">
+          <mat-radio-button value="BID">Buy</mat-radio-button>
+          <mat-radio-button value="ASK">Sell</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="input-form">
+        <mat-label *ngIf="form.get('orderType')!.value =='BID'">Enter amount to buy</mat-label>
+        <mat-label *ngIf="form.get('orderType')!.value =='ASK'">Enter amount to sell</mat-label>
+        <input formControlName="amount" class="form-control" placeholder="Amount" required >
+      </div>
+      <div class="input-form">
+        <mat-label>Enter your limit price</mat-label>
+        <input formControlName="limitPrice" class="form-control" placeholder="Limit price" required>
+      </div>
+      <div class="btn-submit">
+        <button *ngIf="form.get('orderType')!.value =='BID'"
+                type="submit" mat-raised-button color="primary" >BUY</button>
+        <button *ngIf="form.get('orderType')!.value =='ASK'"
+                type="submit" mat-raised-button color="warn" >SELL</button>
+      </div>
+    </form>
+    <div *ngIf="isTransfer" class="success-container">
+      <mat-icon class="done-logo">check_circle_outline</mat-icon>
+      <h3>Successfully ! </h3>
+    </div>
+  </mat-card>
+</div>
+
+<table mat-table [dataSource]="orders" class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.creationDate.replace('T', ' ')}}
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"
+        [ngStyle]="{'color': element.orderType == 'BID' ? '#15ba6b' : '#be333d'}">
+      <span *ngIf="element.orderType == 'BID'">BUY</span>
+      <span *ngIf="element.orderType == 'ASK'">SELL</span>
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Pair">
+    <th mat-header-cell *matHeaderCellDef> Pair </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.currencyPair.replace('_', '/')}}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Amount">
+    <th mat-header-cell *matHeaderCellDef> Amount </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.amount}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Limit">
+    <th mat-header-cell *matHeaderCellDef> Limit </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.limitPrice}} €
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.orderType == 'BID' ? '#b8e6d1' : '#d49298'}">
+      {{element.status}}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+
+

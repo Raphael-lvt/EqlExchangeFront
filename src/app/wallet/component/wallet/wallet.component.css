@@ -1,0 +1,92 @@
+table {
+    width: 80%;
+    background-color: #142028;
+    color: white;
+    margin: 0 auto;
+  }
+
+  th {
+    color: white;
+    font-size: 22px;
+  }
+
+  td {
+    color: white;
+    font-size: 18px;
+  }
+
+  .btn-trade {
+    padding: 0 10px;
+  }
+
+  .image{
+      width: 40px;
+      height: 40px;
+      margin-left: 5px;
+  }
+
+mat-card {
+  width: 45%;
+  padding: 40px 30px 20px 40px;
+  margin: 0 auto;
+  background-color: #142028;
+  color: #818ea3;
+}
+
+.second-card {
+  margin-top: 10px;
+  background-color: #142028;
+  padding: 20px;
+}
+
+h1 {
+  color: white;
+}
+
+.title {
+  margin-top: 10px !important;
+}
+
+
+mat-list-item h1 {
+  padding: 20px;
+  margin-top: 18px;
+}
+
+mat-list-item h2 {
+  margin-top: 42px;
+  color: #818ea3;
+}
+
+#amount {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.amount {
+  float: right;
+  position: absolute;
+  left: 318px;
+  display: flex;
+}
+
+
+mat-list-item {
+  margin-top: 20px;
+}
+
+.btn-container button {
+  margin: 0 10px;
+  width: 30%;
+  background-color: #fcd535;
+  color: black;
+}
+
+.container-img {
+  padding: 10px;
+}
+
+.logo-img {
+  height: 50px;
+  width: 50px;
+}

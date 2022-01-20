@@ -1,0 +1,36 @@
+<div class="popup-container">
+  <img class="popup-img" src="/assets/img/popup/popup0.png">
+</div>
+<div class="title-container">
+  <h1 class="title-page">YOUR WALLET</h1>
+</div>
+
+
+
+<mat-card>
+  {{user?.walletAddress?.substring(0, 15) + '...' + user?.walletAddress?.substring(
+  user?.walletAddress!.length - 15, user?.walletAddress!.length - 1)}}
+  <mat-card-title class="title">Equity Value (EUR)</mat-card-title>
+  <h1 id="amount">{{amount?.toFixed(3)}} €</h1>
+
+  <div class="btn-container">
+    <button mat-raised-button color="accent" [routerLink]="['/eqlexchange/explorer']">Trade</button>
+    <button mat-raised-button color="accent" [routerLink]="['/eqlexchange/refill']">Refill</button>
+    <button mat-raised-button color="accent" [routerLink]="['/eqlexchange/transfer']">Transfer</button>
+  </div>
+</mat-card>
+
+<mat-card class="second-card">
+  <mat-list>
+    <mat-list-item *ngFor="let asset of assets" class="list-item">
+      <div class="container-img">
+        <img src="assets/logo/{{asset.currencyTicker.toLocaleLowerCase()}}.png" class="logo-img">
+      </div>
+      <h1>{{asset.currencyTicker}}</h1>
+      <div class="amount">
+        <h1>{{asset.amount.toFixed(3)}}</h1>
+        <h2>≈ {{getAssetAmount(asset.currencyTicker).toFixed(3)}} €</h2>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

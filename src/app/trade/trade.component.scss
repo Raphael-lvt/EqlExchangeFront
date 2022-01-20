@@ -1,0 +1,114 @@
+.chart-cont {
+  margin-left: 10px;
+}
+
+mat-card-title {
+  padding: 10px;
+}
+
+.trade-container {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+}
+
+mat-radio-button {
+  font-size: 18px;
+  padding: 10px;
+}
+
+mat-card {
+  background-color: #142028;
+  width: 30%;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+
+.form-container {
+  color: white;
+  justify-items: center;
+}
+
+
+.element-form {
+  padding: 10px;
+}
+
+.btn-submit {
+  text-align: center;
+  padding: 10px;
+}
+
+.btn-submit button.mat-primary{
+  width: 200px;
+  background-color: #17c671 !important;
+}
+
+.currency-logo {
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+}
+
+.container-pair {
+  display: flex;
+}
+
+.container-pair h2 {
+  padding: 10px;
+  color: #818ea3;
+}
+
+.container-pair h1 {
+  padding-top: 10px;
+  font-size: 30px;
+}
+
+.btn-submit  button.mat-warn{
+  width: 200px;
+}
+
+.input-form {
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.success-container {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.done-logo {
+  color: #17c671;
+}
+
+.success-container h3 {
+  margin-left: 10px;
+}
+
+table {
+  width: 80%;
+  background-color: #0b1217;
+  color: white;
+  margin: 20px auto;
+}
+
+th {
+  color: #818ea3;
+  font-size: 13px;
+}
+
+td {
+  color: white;
+  font-size: 13px;
+}
+
+.mat-row:hover .mat-cell{
+  background-color: black;
+}
+
