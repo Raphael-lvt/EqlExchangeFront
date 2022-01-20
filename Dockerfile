@@ -12,7 +12,8 @@ RUN npm run build --prod
 # Stage 2
 
 FROM nginx:1.20.2-alpine
-
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build-step /app/dist/exchange-app /usr/share/nginx/html
 
 EXPOSE 80
+
