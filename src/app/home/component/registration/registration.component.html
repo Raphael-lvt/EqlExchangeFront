@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+
+<mat-card class="card">
+
+  <mat-card-title>Complete this form for register</mat-card-title>
+
+  <div class="credit-card">
+    <form [formGroup]="form" class="normal-form" (ngSubmit)="createUser()">
+
+      <mat-card-subtitle>Name</mat-card-subtitle>
+      <div class="date-cvc">
+
+        <mat-form-field appearance="fill">
+          <mat-label>First name</mat-label>
+          <input formControlName="firstName" required matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Last name</mat-label>
+          <input formControlName="lastName" required matInput>
+        </mat-form-field>
+
+      </div>
+
+      <mat-card-subtitle>Username & email</mat-card-subtitle>
+      <div class="date-cvc">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input formControlName="username" required matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            required
+            email
+            matInput>
+          <mat-error *ngIf="form.get('email')?.invalid">Enter a valid email.</mat-error>
+          <mat-error *ngIf="form.errors?.['existEmail']">Enter a valid email.</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <mat-card-subtitle>Enter password</mat-card-subtitle>
+      <div class="date-cvc">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" [type]="hide ? 'password' : 'text'" required matInput>
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput required [type]="hide ? 'password' : 'text'" required matInput>
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+      </div>
+
+      <mat-card-subtitle>Date of birth</mat-card-subtitle>
+      <div class="date-cvc">
+
+        <mat-form-field appearance="fill" class="azerty">
+          <mat-label>Birth date</mat-label>
+          <input formControlName="dateOfBirth" matInput [matDatepicker]="picker" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+    <button class="submit-btn" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Register</button>
+
+    <div *ngIf="isSuccess" class="success-container">
+      <mat-icon class="done-logo">check_circle_outline</mat-icon>
+      <h3>Successfully ! </h3>
+    </div>
+    </form>
+
+  </div>
+</mat-card>
+

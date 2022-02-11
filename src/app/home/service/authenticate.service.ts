@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of, tap} from "rxjs";
 import {Login} from "../model/login";
 import {LoginResponse} from "../model/LogResponse";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import {LoginResponse} from "../model/LogResponse";
 export class AuthenticateService {
 
   public currentRole : string = "?";
-  private authenticateURL = 'http://localhost:8085/authenticate';
+  private authenticateURL = environment.backEnd+'/authenticate';
   private _headers = new HttpHeaders({'Content-Type': 'application/json'});
   public isAuthenticated: boolean = false;
   public token: string = '';
@@ -20,7 +21,7 @@ export class AuthenticateService {
 
   public authenticate(login: Login): Observable<LoginResponse>{
     sessionStorage.setItem('authToken',"?");
-    return this.http.post<LoginResponse>(this.authenticateURL,login, {headers: this._headers} )
+    return this.http.post<LoginResponse>(this.authenticateURL,login, {headers: this._headers})
       .pipe(
         tap((loginResponse)=>{
           sessionStorage.clear();

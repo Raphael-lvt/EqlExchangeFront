@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {AuthenticateService} from "../home/service/authenticate.service";
 import {User} from "../model/User";
-import {catchError, Observable, throwError} from "rxjs";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -22,7 +21,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public getCurrentUser(): Observable<User> {
-    return this.http.get<User>(this.apiURL+`api/user?email=${this.userEmail}`, this.httpOptions);
+    return this.http.get<User>(this.apiURL+`/api/user?email=${this.userEmail}`, this.httpOptions);
+  }
+
+  public addUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiURL}/api/newUser`, user);
+  }
+
+  public checkExistEmail(email: string) {
+    return this.http.get(this.apiURL+`/api/exist?email=${email}`);
   }
 
   errorHandler(error: any) {
