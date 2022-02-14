@@ -12,6 +12,7 @@ export class UserService {
 
   userEmail: any = sessionStorage.getItem('email');
   apiURL: string = environment.backEnd;
+  apiLambda: string = environment.backLambda
   httpOptions = {
     headers: new HttpHeaders( {'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + sessionStorage.getItem('authToken')
@@ -25,7 +26,7 @@ export class UserService {
   }
 
   public addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiURL}/api/newUser`, user);
+    return this.http.post<User>(`${this.apiLambda}/createuser`, user);
   }
 
   public checkExistEmail(email: string): Observable<any> {
