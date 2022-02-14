@@ -11,7 +11,7 @@ import {
 } from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserService} from "../../../service/user.service";
-import {map, Observable, take} from "rxjs";
+import {map, Observable} from "rxjs";
 
 @Component({
   selector: 'app-registration',
@@ -21,8 +21,16 @@ import {map, Observable, take} from "rxjs";
 export class RegistrationComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    const currentDay = new Date().getDate();
+    console.log(currentDay);
+    this.minDate = new Date(currentYear - 90, currentMonth, currentDay);
+    this.maxDate = new Date(currentYear - 18, currentMonth, currentDay);
   }
 
+  minDate!: Date;
+  maxDate!: Date;
   hide = true;
   isExistEmail: boolean = false;
   isSuccess: boolean = false;
@@ -71,6 +79,7 @@ export class RegistrationComponent implements OnInit {
     console.log(this.form.value)
     this.userService.addUser(this.form.value).subscribe({
         error: (error: HttpErrorResponse) => {
+          console.log(error);
         },
         complete: () => {
           this.isSuccess = true;

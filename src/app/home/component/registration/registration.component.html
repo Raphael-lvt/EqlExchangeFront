@@ -71,8 +71,8 @@
 
         <mat-form-field appearance="fill" class="azerty">
           <mat-label>Birth date</mat-label>
-          <input formControlName="dateOfBirth" matInput [matDatepicker]="picker" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <input formControlName="dateOfBirth" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" required>
+          <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
