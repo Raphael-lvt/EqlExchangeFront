@@ -28,7 +28,7 @@ export class UserService {
     return this.http.post<User>(`${this.apiURL}/api/newUser`, user);
   }
 
-  public checkExistEmail(email: string) {
+  public checkExistEmail(email: string): Observable<any> {
     return this.http.get(this.apiURL+`/api/exist?email=${email}`);
   }
 

@@ -1,8 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn} from "@angular/forms";
+import {
+  AbstractControl,
+  AsyncValidatorFn,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserService} from "../../../service/user.service";
+import {map, Observable, take} from "rxjs";
 
 @Component({
   selector: 'app-registration',
@@ -25,36 +34,23 @@ export class RegistrationComponent implements OnInit {
       firstName: new FormControl(),
       username: new FormControl(),
       email: new FormControl('', {
-        validators: this.controleExistEmail()
+        validators: [Validators.email],
+        asyncValidators: [this.controlExistEmail()]
       }),
       password: new FormControl(),
       dateOfBirth: new FormControl()
     });
   }
 
-  private controleExistEmail(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      this.verifyEmail(control.value);
-      console.log(this.isExistEmail)
-      if(this.isExistEmail === false) {
-        return null;
-      } else {
-        return { existEmail : true}
-      }
+  public controlExistEmail(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors| null> => {
+      let email = control.value;
+      return this.userService.checkExistEmail(email).pipe(
+        map( res => {
+          return res ? {existEmail: true} : null;
+        })
+      );
     }
-  }
-
-  public verifyEmail(email: string) {
-    this.userService.checkExistEmail(email).subscribe({
-        next: value => {
-          if(value === true) {
-            this.isExistEmail = true;
-          } else {
-            this.isExistEmail = false;
-          }
-        }
-      }
-    );
   }
 
   public createUser() {
@@ -64,7 +60,7 @@ export class RegistrationComponent implements OnInit {
         },
         complete: () => {
           this.isSuccess = true;
-          setTimeout(()=>{
+          setTimeout(() => {
             this.router.navigate(['']);
           }, 1000);
         }

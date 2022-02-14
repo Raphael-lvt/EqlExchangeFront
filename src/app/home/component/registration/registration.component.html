@@ -37,8 +37,9 @@
             required
             email
             matInput>
-          <mat-error *ngIf="form.get('email')?.invalid">Enter a valid email.</mat-error>
-          <mat-error *ngIf="form.errors?.['existEmail']">Enter a valid email.</mat-error>
+          <mat-error *ngIf="form.get('email')?.errors?.['email']">Enter a valid email.</mat-error>
+          <mat-error *ngIf="form.get('email')?.errors?.['existEmail']">Email already exist.</mat-error>
+
         </mat-form-field>
 
       </div>
