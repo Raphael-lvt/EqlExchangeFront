@@ -24,7 +24,6 @@ export class RegistrationComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const currentDay = new Date().getDate();
-    console.log(currentDay);
     this.minDate = new Date(currentYear - 90, currentMonth, currentDay);
     this.maxDate = new Date(currentYear - 18, currentMonth, currentDay);
   }

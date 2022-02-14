@@ -15,7 +15,6 @@ export class AppComponent {
   constructor(private authenticate: AuthenticateService) {
     this.authenticate.isAuthenticate().subscribe( (data) => {
       this.data$ = data
-      console.log("helooooooooooooooooooooo" + data)
     });
   }
 

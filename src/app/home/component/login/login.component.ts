@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {Login} from "../../model/login";
 import {LoginResponse} from "../../model/LogResponse";
@@ -11,7 +11,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   login: Login = new Login("","");
   err:number = 0;
@@ -19,15 +19,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthenticateService, private router:Router, private modalService: NgbModal) {}
 
-  ngOnInit(): void {
-
-  }
-
   doLogin() {
-    console.log(this.login.email);
     this.authService.authenticate(this.login).subscribe({
       next: (loginResp : LoginResponse)=>{
-        console.log(loginResp);
         this.message = loginResp.message;
         this.modalService.dismissAll();
       },
