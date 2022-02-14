@@ -57,10 +57,11 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Confirm Password</mat-label>
-          <input matInput required [type]="hide ? 'password' : 'text'" required matInput>
+          <input formControlName="confirmPassword" [type]="hide ? 'password' : 'text'" required matInput>
           <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
+          <mat-error *ngIf="form.get('confirmPassword')?.errors?.['notSame']">Passwords are different.</mat-error>
         </mat-form-field>
 
       </div>

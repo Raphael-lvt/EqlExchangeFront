@@ -37,7 +37,10 @@ export class RegistrationComponent implements OnInit {
         validators: [Validators.email],
         asyncValidators: [this.controlExistEmail()]
       }),
-      password: new FormControl(),
+      password: new FormControl(''),
+      confirmPassword: new FormControl('', {
+        validators: [this.controlConfirmPassword()]
+      }),
       dateOfBirth: new FormControl()
     });
   }
@@ -50,6 +53,17 @@ export class RegistrationComponent implements OnInit {
           return res ? {existEmail: true} : null;
         })
       );
+    }
+  }
+
+  private controlConfirmPassword(): ValidatorFn {
+    return (control:AbstractControl): ValidationErrors | null => {
+      let passWordToCheck = '';
+      if(this.form != undefined) {
+        passWordToCheck = this.form?.get('password')?.value;
+      }
+      let confirmPassword = control.value;
+      return passWordToCheck === confirmPassword ? null : {notSame: true};
     }
   }
 
