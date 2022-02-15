@@ -1,5 +1,8 @@
 pipeline {
     agent any
+   options {
+    buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2'))
+  }
 
     environment {
         AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
