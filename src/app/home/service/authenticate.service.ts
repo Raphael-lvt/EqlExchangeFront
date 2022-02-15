@@ -12,7 +12,7 @@ import {environment} from "../../../environments/environment";
 export class AuthenticateService {
 
   public currentRole : string = "?";
-  private authenticateURL = environment.backEnd+'/authenticate';
+  private authenticateURL = environment.backLambda+'/authenticate';
   private _headers = new HttpHeaders({'Content-Type': 'application/json'});
   public isAuthenticated: boolean = false;
   public token: string = '';
