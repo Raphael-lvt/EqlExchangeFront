@@ -7,13 +7,7 @@
 
 <div class="trade-container">
   <div class="chart-cont">
-    <div class="container-pair">
-      <img alt="currency" src="/assets/logo/eur.png" class="currency-logo">
-      <img alt="currency" src="/assets/logo/{{currencyId.toLocaleLowerCase()}}.png" class="currency-logo">
-      <h2>EUR /</h2>
-      <h1>{{currencyId}}</h1>
-    </div>
-    <app-chart [symbolPair]="pair.replace('_','')" [width]="1000" [height]="350"></app-chart>
+    <app-chart [symbolPair]="pair.replace('_','')" [width]="1000" [height]="350" [currency]="currencyId"></app-chart>
   </div>
   <mat-card class="form-container">
     <mat-card-title align="center">Trade tokens in an instant</mat-card-title>
