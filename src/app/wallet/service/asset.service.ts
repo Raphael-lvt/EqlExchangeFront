@@ -27,8 +27,7 @@ export class AssetService {
 
   public getWalletAmount(assets: Asset[]): Observable<number> {
     let amount: number = 0;
-    let result = new Subject<number>()
-    console.log(assets);
+    let result = new Subject<number>();
     for (let asset of assets) {
       if (asset.currencyTicker == 'EUR') {
         amount += asset.amount
