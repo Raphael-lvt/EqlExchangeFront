@@ -23,7 +23,7 @@ triggers { pollSCM '* * * * *' }
         stage('Checkout Project') {
             steps {
                 echo "-=- Checout project -=-"
-                git branch: 'master', credentialsId: 'bd839270-f94c-4dc1-9081-6b4b889efaae', url: 'git@github.com:Msaddek/EqlExchangeFront.git'
+                git branch: 'master', credentialsId: 'jenkinsSSH', url: 'git@github.com:Msaddek/EqlExchangeFront.git'
             }
         }
         
