@@ -31,6 +31,7 @@ import {RefillModule} from "./refill/refill.module";
 import {MatListModule} from "@angular/material/list";
 import { TransferComponent } from './transfer/transfer.component';
 import {TransferModule} from "./transfer/transfer.module";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import {TransferModule} from "./transfer/transfer.module";
     MatRadioModule,
     TradeModule,
     MatSelectModule,
+    MatInputModule,
     RefillModule,
     MatListModule,
     TransferModule
