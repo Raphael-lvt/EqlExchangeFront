@@ -14,9 +14,6 @@ triggers { pollSCM '* * * * *' }
 
         AWS_EB_APP_VERSION = "${BUILD_ID}"
     }
-    tools {
-        maven 'MVN'
-    }
 
     stages {
        
