@@ -48,4 +48,8 @@ export class AssetService {
     }
     return result.asObservable()
   }
+
+  public getAssetByTicker(ticker: string): Observable<Asset> {
+    return this.http.get<Asset>(`${this.apiServer}/userAsset?userEmail=${this.email}&currencyTicker=${ticker}`);
+  }
 }
