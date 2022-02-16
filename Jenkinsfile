@@ -12,7 +12,7 @@ triggers { pollSCM '* * * * *' }
         REPO = 'https://github.com/Msaddek/EqlExchangeFront'
         BUILD_SUCCESS= false
 
-        AWS_EB_APP_VERSION = "${BUILD_ID}"
+        AWS_EB_APP_VERSION = "${BUILD_ID}-local"
     }
 
     stages {
